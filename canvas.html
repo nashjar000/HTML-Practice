@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Graphics</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+
+        canvas {
+            background-color: white;
+            border: 1px solid #ccc;
+        }
+    </style>
+
+    <h1>Graphics:</h1>
+    <p>Here are some examples of HTML graphics. I used <a href="https://www.w3schools.com/html/html5_canvas.asp" target="_blank">w3Schools</a> for inspiration.</p>
+
+    <section id="canvas" style="display: inline-block; padding-top: 30px;">
+        <h1>HTML Graphics Practice</h1>
+
+        <canvas id="circle" width="200" height="100" style="border:1px solid #d3d3d3;"></canvas>
+
+        <script>
+            var c = document.getElementById("circle");
+            var ctx = c.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+            ctx.stroke();
+        </script>
+
+        <canvas id="line" width="200" height="100" style="border:1px solid #d3d3d3;"></canvas>
+
+        <script>
+            var c = document.getElementById("line");
+            var ctx = c.getContext("2d");
+            ctx.moveTo(0, 0);
+            ctx.lineTo(200, 100);
+            ctx.stroke();
+        </script>
+
+        <canvas id="text" width="200" height="100" style="border:1px solid #d3d3d3;"></canvas>
+
+        <script>
+            var c = document.getElementById("text");
+            var ctx = c.getContext("2d");
+            ctx.font = "30px Arial";
+            ctx.fillText("Hello World", 10, 50);
+        </script>
+
+        <canvas id="StrokeText" width="200" height="100" style="border:1px solid #d3d3d3;"></canvas>
+
+        <script>
+            var c = document.getElementById("StrokeText");
+            var ctx = c.getContext("2d");
+            ctx.font = "30px Arial";
+
+            // Create a linear gradient
+            var gradient = ctx.createLinearGradient(10, 0, 190, 0);
+            gradient.addColorStop(0, "blue"); // start color
+            gradient.addColorStop(0.5, "purple"); // middle color
+            gradient.addColorStop(1, "red"); // end color
+
+            // Set the stroke style to the gradient
+            ctx.strokeStyle = gradient;
+
+            // Draw the text with the gradient stroke
+            ctx.strokeText("Hello World", 10, 50);
+        </script>
+
+        <canvas id="Linear Gradient" width="200" height="100" style="border:1px solid #d3d3d3;"></canvas>
+
+        <script>
+            var c = document.getElementById("Linear Gradient");
+            var ctx = c.getContext("2d");
+            var grd = ctx.createLinearGradient(0, 0, 200, 0);
+            grd.addColorStop(0, "red");
+            grd.addColorStop(1, "blue");
+            ctx.fillStyle = grd;
+            ctx.fillRect(10, 10, 180, 80);
+        </script>
+
+        <canvas id="Circular Gradient" width="200" height="100" style="border:1px solid #d3d3d3;"></canvas>
+
+        <script>
+            var c = document.getElementById("Circular Gradient");
+            var ctx = c.getContext("2d");
+            var grd = ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
+            grd.addColorStop(0, "red");
+            grd.addColorStop(1, "blue");
+            ctx.fillStyle = grd;
+            ctx.fillRect(10, 10, 180, 80);
+        </script>
+
+        <canvas id="image" width="250" height="300" style="border:1px solid #d3d3d3;">
+            <!-- <img src="scream.jpg" alt="The Scream" width="220" height="277"> -->
+        </canvas>
+        <script>
+            var c = document.getElementById("image");
+            var ctx = c.getContext("2d");
+            var img = new Image();
+            img.src = "scream.jpg";
+            img.onload = function() {
+            ctx.drawImage(img, 10, 10);
+            };
+        </script>
+
+    </section>
+<section id="svg" style="display: inline-block; padding-top: 100px; padding-bottom: 100px;">
+    <h1>SVG</h1>
+
+    <svg width="300" height="200">
+        <polygon points="100,10 40,198 190,78 10,78 160,198"
+        style="fill:gold;stroke:red;stroke-width:5;fill-rule:nonzero;" />
+    </svg>
+
+    <svg height="130" width="500">
+        <defs>
+          <linearGradient id="grad1">
+            <stop offset="30%" stop-color="green" />
+            <stop offset="100%" stop-color="blue" />
+          </linearGradient>
+        </defs>
+        <ellipse cx="100" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+        <text fill="#ffffff" font-size="45" font-family="Verdana" x="50" y="86">SVG</text>
+        Sorry, your browser does not support inline SVG.
+    </svg>
+
+    <svg width="400" height="180">
+        <rect x="50" y="20" rx="20" ry="20" width="150" height="150"
+        style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+      </svg>
+
+</section>
+
+</body>
+</html>
